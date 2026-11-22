@@ -22,7 +22,7 @@ const translations = {
     greeting: name=>"안녕하세요. "+name+" 문의드립니다.",
     fields: ["필요한 기능과 현재 상황","희망 일정","예산"],
     closing: "가능한 제작 범위와 견적, 일정을 알려주시면 감사하겠습니다.",
-    paste: "셈제작소에 이메일로 보내거나, 문장을 복사해 크몽 문의창에 붙여넣을 수 있습니다.",
+    paste: "이메일로 바로 보내거나, 문장을 복사해 크몽 문의창에 붙여넣을 수 있습니다.",
     copied: "문의 문장을 복사했습니다.",
     selected: "문장을 선택했습니다. 복사 단축키로 복사해 주세요.",
     required: "필요한 기능이나 작업 상황을 적어 주세요."
@@ -31,7 +31,7 @@ const translations = {
     greeting: name=>"Hello, I'd like to discuss a project: "+name+".",
     fields: ["What we need and how we work now","Preferred timeline","Budget"],
     closing: "Could you share the scope you can deliver, an estimated quote, and your availability?",
-    paste: "Send an email to Saem Studio, or copy this text into your marketplace message.",
+    paste: "Send it by email, or copy this text into your marketplace message.",
     copied: "Inquiry text copied.",
     selected: "The text is selected. Use your device's copy command.",
     required: "Please describe what you need or how you work today."
@@ -40,35 +40,56 @@ const translations = {
     greeting: name=>"こんにちは。"+name+"についてご相談です。",
     fields: ["必要な機能と現在の運用","希望時期","予算"],
     closing: "対応可能な範囲、お見積もり、制作日程を教えていただけますでしょうか。",
-    paste: "セム制作所に直接メールで送信するか、相談文を各サービスのメッセージ欄に貼り付けてください。",
+    paste: "メールで直接送信するか、相談文を各サービスのメッセージ欄に貼り付けてください。",
     copied: "相談文をコピーしました。",
     selected: "相談文を選択しました。端末のコピー操作でコピーしてください。",
     required: "必要な機能、または現在の運用を入力してください。"
   }
 };
 const copyText=translations[document.documentElement.lang] ?? translations.ko;
+const reduceMotion=matchMedia("(prefers-reduced-motion: reduce)");
+const mockMain=document.querySelector(".mock-main");
+const mockStats=document.getElementById("mock-stats");
+const formCard=document.querySelector(".form-card");
 
 function showScopeHint(){
   scopeHint.textContent=service.selectedOptions[0].dataset.hint;
 }
 
+function renderPreview(view){
+  document.getElementById("mock-label").textContent=view.name;
+  document.getElementById("mock-kicker").textContent=view.kind;
+  document.getElementById("mock-title").textContent=view.title;
+  const stats=view.values.map(([value,note])=>{
+    const box=document.createElement("span");
+    const label=document.createElement("small");
+    box.textContent=value;
+    label.textContent=note;
+    box.append(label);
+    return box;
+  });
+  mockStats.replaceChildren(...stats);
+  document.getElementById("mock-action").textContent=view.action;
+}
+let swapToken=0;
 document.querySelectorAll(".view-tab").forEach(button=>{
   button.addEventListener("click", ()=>{
     const view=previews[button.dataset.preview];
     document.querySelectorAll(".view-tab").forEach(tab=>tab.setAttribute("aria-pressed",String(tab===button)));
-    document.getElementById("mock-label").textContent=view.name;
-    document.getElementById("mock-kicker").textContent=view.kind;
-    document.getElementById("mock-title").textContent=view.title;
-    const stats=view.values.map(([value,note])=>{
-      const box=document.createElement("span");
-      const label=document.createElement("small");
-      box.textContent=value;
-      label.textContent=note;
-      box.append(label);
-      return box;
-    });
-    document.getElementById("mock-stats").replaceChildren(...stats);
-    document.getElementById("mock-action").textContent=view.action;
+    mockStats.classList.add("is-swapped");
+    if(reduceMotion.matches || !mockMain.animate){
+      renderPreview(view);
+      return;
+    }
+    const token=++swapToken;
+    mockMain.getAnimations().forEach(animation=>animation.cancel());
+    mockMain.animate([{opacity:1},{opacity:0,translate:"0 -4px"}],{duration:90,easing:"ease-in"}).finished
+      .then(()=>{
+        if(token!==swapToken) return;
+        renderPreview(view);
+        mockMain.animate([{opacity:0,translate:"0 6px"},{opacity:1,translate:"0 0"}],{duration:200,easing:"cubic-bezier(.2,.8,.2,1)"});
+      })
+      .catch(()=>{ if(token===swapToken) renderPreview(view); });
   });
 });
 document.querySelectorAll("[data-select]").forEach(link=>{
@@ -78,6 +99,10 @@ document.querySelectorAll("[data-select]").forEach(link=>{
     scope.setCustomValidity("");
     status.textContent="";
     draft.hidden=true;
+    formCard.classList.remove("is-picked");
+    void formCard.offsetWidth;
+    formCard.classList.add("is-picked");
+    setTimeout(()=>formCard.classList.remove("is-picked"),1200);
     requestAnimationFrame(()=>scope.focus({preventScroll:true}));
   });
 });
@@ -130,6 +155,33 @@ document.querySelectorAll("[data-demo]").forEach(demo=>{
     choice.addEventListener("click",()=>{
       choices.forEach(other=>other.setAttribute("aria-pressed",String(other===choice)));
       result.textContent=choice.textContent.trim();
+      result.classList.remove("bump");
+      void result.offsetWidth;
+      result.classList.add("bump");
     });
   });
 });
+
+// 첫 화면 등장이 끝나면 등장용 애니메이션을 떼어 냄(탭 전환 때 다시 돌지 않게)
+const hero=document.querySelector("[data-enter]");
+if(hero) setTimeout(()=>hero.classList.add("entered"),1600);
+
+// 흐름도 신호: 화면에 보이면 한 번(2회 반복, 4.4초) 흐르고, 마우스를 올리면 다시
+function replayFlow(demo){
+  demo.classList.remove("is-live");
+  void demo.offsetWidth;
+  demo.classList.add("is-live");
+}
+const flows=document.querySelectorAll(".program-demo");
+if("IntersectionObserver" in window){
+  const seen=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        replayFlow(entry.target);
+        seen.unobserve(entry.target);
+      }
+    });
+  },{threshold:.6});
+  flows.forEach(demo=>seen.observe(demo));
+}
+flows.forEach(demo=>demo.addEventListener("pointerenter",()=>replayFlow(demo)));
