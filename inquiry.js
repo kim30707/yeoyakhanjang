@@ -10,6 +10,7 @@ const scope=document.getElementById("scope");
 const draft=document.getElementById("draft");
 const message=document.getElementById("message");
 const status=document.getElementById("form-status");
+const directEmail=document.getElementById("direct-email");
 const marketplace = {
   fiverr: "https://www.fiverr.com/kiki_kore",
   upwork: "https://www.upwork.com/freelancers/~0133ffc18fb26ccf91"
@@ -24,8 +25,8 @@ const translations = {
     greeting: name=>"안녕하세요. "+name+" 문의드립니다.",
     fields: ["필요한 기능과 현재 상황","희망 일정","예산"],
     closing: "가능한 제작 범위와 견적, 일정을 알려주시면 감사하겠습니다.",
-    paste: "문장을 복사해 크몽 문의창에 붙여넣어 주세요.",
-    copied: "복사했습니다. 크몽 문의창에 붙여넣어 주세요.",
+    paste: "셈제작소에 이메일로 보내거나, 문장을 복사해 크몽 문의창에 붙여넣을 수 있습니다.",
+    copied: "문의 문장을 복사했습니다.",
     selected: "문장을 선택했습니다. 복사 단축키로 복사해 주세요.",
     required: "필요한 기능이나 작업 상황을 적어 주세요."
   },
@@ -33,8 +34,8 @@ const translations = {
     greeting: name=>"Hello, I'd like to discuss a project: "+name+".",
     fields: ["What we need and how we work now","Preferred timeline","Budget"],
     closing: "Could you share the scope you can deliver, an estimated quote, and your availability?",
-    paste: "Copy this text into your Fiverr or Upwork message.",
-    copied: "Copied. Paste it into your Fiverr or Upwork message.",
+    paste: "Send an email to Saem Studio, or copy this text into your marketplace message.",
+    copied: "Inquiry text copied.",
     selected: "The text is selected. Use your device's copy command.",
     required: "Please describe what you need or how you work today."
   },
@@ -42,8 +43,8 @@ const translations = {
     greeting: name=>"こんにちは。"+name+"についてご相談です。",
     fields: ["必要な機能と現在の運用","希望時期","予算"],
     closing: "対応可能な範囲、お見積もり、制作日程を教えていただけますでしょうか。",
-    paste: "相談文をコピーし、FiverrまたはUpworkのメッセージ欄に貼り付けてください。",
-    copied: "コピーしました。FiverrまたはUpworkのメッセージ欄に貼り付けてください。",
+    paste: "セム制作所に直接メールで送信するか、相談文を各サービスのメッセージ欄に貼り付けてください。",
+    copied: "相談文をコピーしました。",
     selected: "相談文を選択しました。端末のコピー操作でコピーしてください。",
     required: "必要な機能、または現在の運用を入力してください。"
   }
@@ -93,13 +94,17 @@ form.addEventListener("submit", event=>{
   const [details,timeline,budget]=copyText.fields;
   const optional=[[timeline,data.get("when").trim()],[budget,data.get("budget").trim()]]
     .filter(([,value])=>value).map(([label,value])=>label+" — "+value);
-  message.value=[copyText.greeting(service.selectedOptions[0].textContent),"",details,text,...optional,"",copyText.closing].join("\n");
+  const serviceName=service.selectedOptions[0].textContent;
+  message.value=[copyText.greeting(serviceName),"",details,text,...optional,"",copyText.closing].join("\n");
+  const subject=encodeURIComponent("[SEM-WEB-INQUIRY] "+serviceName);
+  const body=encodeURIComponent(message.value.replace(/\n/g,"\r\n"));
+  directEmail.href="mailto:kim30707@gmail.com?subject="+subject+"&body="+body;
   for(const [platform,link] of destinations){
     link.href=service.value==="web" ? websiteListing.get(platform) : marketplace[platform];
   }
   draft.hidden=false;
   status.textContent=copyText.paste;
-  document.getElementById("copy").focus();
+  directEmail.focus();
 });
 document.getElementById("copy").addEventListener("click",async ()=>{
   try{

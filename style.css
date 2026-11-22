@@ -31,3 +31,9 @@
 html:not([lang="ko"]) .service .text-link{margin-top:14px}
 @media(max-width:920px){.top-inner>nav{display:none}.top-inner>.languages{margin-left:auto}}
 @media(max-width:640px){.program-grid{grid-template-columns:1fr;gap:18px}.top-inner>.header-button{display:none}.languages a{padding-inline:5px}}
+
+.direct-contact{display:flex;flex-wrap:wrap;gap:8px 20px;margin:14px 0 4px}
+.direct-contact a{font-weight:700;color:var(--forest)}
+.direct-action{margin-top:12px}
+.studio-credit{font-size:13px;white-space:normal}
+.footer-inner{flex-wrap:wrap}
