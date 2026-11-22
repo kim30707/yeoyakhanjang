@@ -113,7 +113,7 @@ html:not([lang="ko"]) .service .text-link{margin-top:14px}
 .portfolio-action{display:inline-flex;align-items:center;min-height:44px;margin-top:5px}
 .portfolio-art{min-width:0;margin:0;border-radius:8px}
 .company-art{overflow:hidden;background:#132d47}
-.company-art img{display:block;width:100%;height:auto;min-height:138px;object-fit:cover;object-position:32% center}
+.company-art img{display:block;width:100%;height:auto;min-height:138px;object-fit:cover;object-position:left center}
 .shop-art{padding:10px 10px 10px 27px;background:#eaf1e7;border:1px solid #cfddcd;color:#274536}
 .shop-art li{padding:4px 0;margin-left:2px}
 .shop-art li+li{border-top:1px solid #cbdccb}
