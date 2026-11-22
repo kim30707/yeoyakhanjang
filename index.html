@@ -16,7 +16,7 @@
 <meta property="og:description" content="셈제작소가 홈페이지·숙소와 공연 예약, 매장 QR 주문 시스템, ERP와 앱, 쇼핑몰, 푸드코트 호출방송을 맞춤 제작합니다.">
 <meta property="og:url" content="https://yeoyakhanjang.mr-kim4.chatgpt.site/">
 <meta property="og:site_name" content="예약한장 · Yeyak Hanjang">
-<link rel="stylesheet" href="style.css?v=20261123-studio">
+<link rel="stylesheet" href="style.css?v=20261123-quickorder">
 <script src="inquiry.js?v=20261123-studio" defer></script>
 </head>
 <body>
@@ -31,17 +31,17 @@
 <section class="hero studio-hero"><div class="wrap hero-grid">
 <div class="hero-copy"><p class="eyebrow">셈제작소 · 맞춤 웹·앱 제작</p>
 <h1>예약부터 주문까지,<br><em>운영에 맞춰 만듭니다.</em></h1>
-<p class="intro">홈페이지, QR 주문, 앱과 업무 프로그램까지. 손님이 쓰는 화면과 매장에서 관리하는 흐름을 함께 설계합니다.</p>
+<p class="intro">홈페이지, 사전 주문·매장 QR 주문, 앱과 업무 프로그램까지. 손님이 쓰는 화면과 매장에서 관리하는 흐름을 함께 설계합니다.</p>
 <div class="hero-actions"><a class="button accent" href="#inquiry">제작 문의</a><a class="button secondary" href="#work">제작 사례 보기</a></div>
 <a class="hero-case" href="#work"><img src="./case-images/theatre.webp" width="88" height="56" alt="극단 도깨비 공개 홈페이지" decoding="async"><span><small>실제 제작 사례 · 극단 도깨비</small><strong>공연 회차와 좌석 예약</strong></span></a>
 </div>
 <div class="showcase studio-showcase">
-<div class="showcase-top"><div class="view-tabs" role="group" aria-label="살펴볼 화면 선택"><button type="button" class="view-tab" data-preview="web" aria-pressed="true">예약</button><button type="button" class="view-tab" data-preview="qrorder" aria-pressed="false">QR 주문</button><button type="button" class="view-tab" data-preview="erp" aria-pressed="false">업무관리</button><button type="button" class="view-tab" data-preview="app" aria-pressed="false">앱</button></div><span class="demo-label">화면 예시</span></div>
+<div class="showcase-top"><div class="view-tabs" role="group" aria-label="살펴볼 화면 선택"><button type="button" class="view-tab" data-preview="web" aria-pressed="true">예약</button><button type="button" class="view-tab" data-preview="qrorder" aria-pressed="false">퀵오더</button><button type="button" class="view-tab" data-preview="erp" aria-pressed="false">업무관리</button><button type="button" class="view-tab" data-preview="app" aria-pressed="false">앱</button></div><span class="demo-label">화면 예시</span></div>
 <div class="mock" id="mock">
 <div class="mock-top"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><strong id="mock-label">공간 예약</strong></div>
 <div class="mock-inner"><div class="mock-side" aria-hidden="true"><span class="sample-icon">ㅈ</span><i></i><i></i><i></i></div>
 <div class="mock-main"><p class="mock-kicker" id="mock-kicker">예약 화면</p><strong id="mock-title" aria-live="polite">원하는 시간을 선택하세요</strong><div class="mock-stats" id="mock-stats"><span>12.05<small>토요일</small></span><span>14:00<small>예약 가능</small></span><span>15:20<small>예약 가능</small></span></div><div class="mock-action" id="mock-action">예약 확인</div></div></div>
-</div><script type="application/json" id="mock-views">{"web":{"name":"공간 예약","kind":"예약 화면","title":"원하는 시간을 선택하세요","values":[["12.05","토요일"],["14:00","예약 가능"],["15:20","예약 가능"]],"action":"예약 확인"},"qrorder":{"name":"매장 주문","kind":"모바일 메뉴","title":"메뉴 선택부터 주문 접수까지","values":[["메뉴","옵션 선택"],["접수","직원 확인"],["완료","준비 안내"]],"action":"주문 상태 보기"},"erp":{"name":"주문 관리","kind":"업무 화면","title":"오늘 주문을 한곳에서","values":[["8건","신규"],["3건","진행 중"],["5건","완료"]],"action":"주문 목록"},"app":{"name":"현장 운영","kind":"업무용 앱","title":"대기·호출 상태를 바로 확인","values":[["A12","호출 중"],["A13","대기"],["A14","접수"]],"action":"접수 상태"}}</script>
+</div><script type="application/json" id="mock-views">{"web":{"name":"공간 예약","kind":"예약 화면","title":"원하는 시간을 선택하세요","values":[["12.05","토요일"],["14:00","예약 가능"],["15:20","예약 가능"]],"action":"예약 확인"},"qrorder":{"name":"매장 사전 주문","kind":"픽업 주문 화면","title":"방문 전에 주문하고 픽업하세요","values":[["매장","픽업 지점"],["12:30","희망 시간 예시"],["준비 완료","수령 안내"]],"action":"픽업 주문 확인"},"erp":{"name":"주문 관리","kind":"업무 화면","title":"오늘 주문을 한곳에서","values":[["8건","신규"],["3건","진행 중"],["5건","완료"]],"action":"주문 목록"},"app":{"name":"현장 운영","kind":"업무용 앱","title":"대기·호출 상태를 바로 확인","values":[["A12","호출 중"],["A13","대기"],["A14","접수"]],"action":"접수 상태"}}</script>
 </div></div></section>
 
 <section id="services" class="wrap section studio-services">
@@ -51,7 +51,7 @@
 <h3>홈페이지·예약</h3><p>기업·매장 소개와 숙소·공연 예약 화면을 함께 구성합니다.</p><a class="text-link" href="#inquiry" data-select="web">제작 문의</a></article>
 <article class="service studio-service">
 <div class="service-type"><span class="service-icon" aria-hidden="true">◈</span><span>매장 운영</span></div>
-<h3>QR·모바일 주문 시스템</h3><p>손님은 휴대폰으로 메뉴를 보고 주문하고, 직원은 한 화면에서 접수와 준비 상태를 확인합니다.</p><a class="text-link" href="#inquiry" data-select="qrorder">제작 문의</a></article>
+<h3>퀵오더·QR 주문 시스템</h3><p>매장에 오기 전에 주문해 픽업하거나, 매장에서 QR로 메뉴를 보고 주문하는 시스템을 제작합니다.</p><a class="text-link" href="#inquiry" data-select="qrorder">제작 문의</a></article>
 <article class="service studio-service">
 <div class="service-type"><span class="service-icon" aria-hidden="true">▦</span><span>업무 관리</span></div>
 <h3>업무 프로그램·ERP</h3><p>주문·예약과 엑셀로 관리하던 업무를 한 화면에 모읍니다.</p><a class="text-link" href="#inquiry" data-select="erp">제작 문의</a></article>
@@ -66,9 +66,11 @@
 <h3>푸드코트 호출방송</h3><p>직원이 입력한 주문번호를 방송 장치로 음성 안내하는 시스템입니다.</p><a class="text-link" href="#inquiry" data-select="foodcourt">제작 문의</a></article></div></section>
 
 <section class="wrap section program" id="qr-order">
-<div class="program-grid qr-grid"><div><p class="eyebrow">맞춤 제작 상담</p><h2>QR·모바일 주문 시스템</h2><p>카페·음식점·푸드코트에서 고객의 휴대폰 주문과 직원의 접수를 연결하는 맞춤 제작입니다.</p>
-<p class="help">메뉴판부터 시작하거나 주문 상태 관리까지 범위를 정할 수 있습니다. 온라인 결제·POS·호출방송은 기존 장비와 서비스에 맞춰 연결 가능성을 상담합니다.</p><a class="button dark" href="#inquiry" data-select="qrorder">QR 주문 시스템 제작 문의</a></div>
-<div class="program-demo"><span>모바일 주문 흐름</span><ol><li><b>QR로 메뉴 열기</b><small>메뉴·옵션 선택</small></li><li><b>주문 접수</b><small>직원 화면에서 주문 확인</small></li><li><b>준비 상태 확인</b><small>주문번호로 확인</small></li></ol></div></div></section>
+<div class="program-grid qr-grid quick-order-grid">
+<div><h2>퀵오더·QR 주문 시스템</h2><p>고객이 방문 전에 매장과 메뉴를 선택하고 미리 주문한 뒤 픽업할 수 있습니다. 매장 테이블이나 카운터에서는 QR로 주문을 받을 수 있습니다.</p><p class="help">픽업 가능 시간, 준비 완료 안내, 주문 취소, 온라인 결제, POS·호출방송 연결은 매장 운영 방식에 맞춰 협의합니다.</p>
+<a class="button dark" href="#inquiry" data-select="qrorder">퀵오더·QR 주문 제작 문의</a></div>
+<div class="quick-order-flows"><div class="program-demo" data-order-mode="preorder"><h3>방문 전 사전 주문</h3><ol><li>매장·메뉴 선택</li><li>미리 주문하고 픽업 시간 선택</li><li>준비 완료 확인 후 매장 수령</li></ol></div><div class="program-demo" data-order-mode="on-site"><h3>매장 QR 주문</h3><ol><li>테이블·카운터 QR 열기</li><li>메뉴·옵션 선택 후 주문</li><li>주문번호로 준비 상태 확인</li></ol></div></div>
+</div></section>
 <section class="wrap section program" id="foodcourt">
 <div class="program-grid"><div><p class="eyebrow">개발 프로그램</p><h2>푸드코트 주문번호 호출방송</h2>
 <p>매장 태블릿에서 주문번호를 입력하면 방송용 안드로이드 기기가 음성으로 읽습니다. 기존 주문 화면과 함께 쓸 수 있게 개발했습니다.</p>
@@ -140,7 +142,7 @@
 <div class="form-card">
 <form id="brief" hidden>
 <label for="service">어떤 일이 필요하신가요?</label>
-<select id="service" name="service" required><option value="" data-hint="필요한 기능과 운영 상황을 적어주세요. 희망 일정과 예산은 정해졌을 때만 적으셔도 됩니다." disabled selected>제작 분야를 선택해 주세요</option><option value="web" data-hint="예: 소개할 객실, 공연 회차, 예약 확인·취소 방식">홈페이지·예약</option><option value="qrorder" data-hint="예: 매장 수와 메뉴 옵션, QR 사용 위치, 현장결제 또는 온라인 결제, POS·호출방송 연동 여부">QR·모바일 주문 시스템</option><option value="erp" data-hint="예: 지금 쓰는 엑셀, 매일 반복되는 작업, 직원별 권한">업무 프로그램·ERP</option><option value="app" data-hint="예: 사용하는 기기, 관리자와 직원이 각각 해야 할 일">웹앱·안드로이드 앱</option><option value="shop" data-hint="예: 상품 수, 기존 쇼핑몰, 옵션·배송 규칙, 네이버쇼핑 준비 범위">쇼핑몰·스마트스토어</option><option value="foodcourt" data-hint="예: 점포 수, 태블릿과 앰프 모델, 기존 주문번호 체계">푸드코트 호출방송</option></select>
+<select id="service" name="service" required><option value="" data-hint="필요한 기능과 운영 상황을 적어주세요. 희망 일정과 예산은 정해졌을 때만 적으셔도 됩니다." disabled selected>제작 분야를 선택해 주세요</option><option value="web" data-hint="예: 소개할 객실, 공연 회차, 예약 확인·취소 방식">홈페이지·예약</option><option value="qrorder" data-hint="예: 방문 전 사전 주문, 매장 QR 주문 또는 둘 다 / 지점 수·메뉴 옵션 / 픽업 시간·준비 완료 안내 / 현장 또는 온라인 결제·POS·호출방송 연동">퀵오더·QR 주문 시스템</option><option value="erp" data-hint="예: 지금 쓰는 엑셀, 매일 반복되는 작업, 직원별 권한">업무 프로그램·ERP</option><option value="app" data-hint="예: 사용하는 기기, 관리자와 직원이 각각 해야 할 일">웹앱·안드로이드 앱</option><option value="shop" data-hint="예: 상품 수, 기존 쇼핑몰, 옵션·배송 규칙, 네이버쇼핑 준비 범위">쇼핑몰·스마트스토어</option><option value="foodcourt" data-hint="예: 점포 수, 태블릿과 앰프 모델, 기존 주문번호 체계">푸드코트 호출방송</option></select>
 <label for="scope">필요한 기능과 지금의 상황</label>
 <textarea id="scope" name="scope" rows="4" maxlength="850" required aria-describedby="scope-hint"></textarea>
 <p id="scope-hint" class="field-hint" aria-live="polite">필요한 기능과 운영 상황을 적어주세요. 희망 일정과 예산은 정해졌을 때만 적으셔도 됩니다.</p>

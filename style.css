@@ -202,3 +202,12 @@ html:not([lang="ko"]) .studio-service .text-link{margin-top:auto}
   .studio-services .service-grid{grid-template-columns:1fr;gap:10px}
   .studio-service{min-height:0;padding:15px 16px 9px}
 }
+
+.quick-order-grid{align-items:start}
+.quick-order-grid h2+p{margin-top:10px}
+.quick-order-flows{display:grid;gap:10px}
+.quick-order-flows .program-demo{padding:15px 17px}
+.quick-order-flows .program-demo:nth-child(2){background:#345548}
+.quick-order-flows .program-demo h3{font-size:16px;line-height:1.35;color:#e5f3d8}
+.quick-order-flows .program-demo ol{margin-top:8px;gap:5px}
+.quick-order-flows .program-demo li{padding:6px 9px;font-size:14px;line-height:1.45}
