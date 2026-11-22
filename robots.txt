@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yeoyakhanjang.mr-kim4.chatgpt.site/sitemap.xml
