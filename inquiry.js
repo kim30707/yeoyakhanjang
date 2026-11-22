@@ -1,12 +1,9 @@
 "use strict";
-const previews = {
-  web: { name:"공간 예약", kind:"예약 홈페이지", title:"원하는 시간을 선택하세요", values:[["12.05","토요일"],["14:00","예약 가능"],["15:20","예약 가능"]], action:"예약 확인" },
-  erp: { name:"주문 관리", kind:"운영 화면", title:"오늘의 주문을 한곳에서", values:[["8건","신규 주문"],["3건","확인 필요"],["5건","처리 완료"]], action:"주문 목록 보기" },
-  app: { name:"현장 운영", kind:"업무용 앱", title:"대기와 호출을 바로 확인", values:[["A12","호출 중"],["A13","대기"],["A14","접수"]], action:"접수 목록 보기" }
-};
+const previews=JSON.parse(document.getElementById("mock-views").textContent);
 const form=document.getElementById("brief");
 const service=document.getElementById("service");
 const scope=document.getElementById("scope");
+const scopeHint=document.getElementById("scope-hint");
 const draft=document.getElementById("draft");
 const message=document.getElementById("message");
 const status=document.getElementById("form-status");
@@ -51,6 +48,10 @@ const translations = {
 };
 const copyText=translations[document.documentElement.lang] ?? translations.ko;
 
+function showScopeHint(){
+  scopeHint.textContent=service.selectedOptions[0].dataset.hint;
+}
+
 document.querySelectorAll(".view-tab").forEach(button=>{
   button.addEventListener("click", ()=>{
     const view=previews[button.dataset.preview];
@@ -67,16 +68,20 @@ document.querySelectorAll(".view-tab").forEach(button=>{
       return box;
     });
     document.getElementById("mock-stats").replaceChildren(...stats);
-    document.getElementById("mock-action").firstChild.textContent=view.action+" ";
+    document.getElementById("mock-action").textContent=view.action;
   });
 });
 document.querySelectorAll("[data-select]").forEach(link=>{
   link.addEventListener("click", ()=>{
     service.value=link.dataset.select;
+    showScopeHint();
+    scope.setCustomValidity("");
+    status.textContent="";
     draft.hidden=true;
     requestAnimationFrame(()=>scope.focus({preventScroll:true}));
   });
 });
+service.addEventListener("change",showScopeHint);
 form.addEventListener("input", ()=>{
   draft.hidden=true;
   status.textContent="";
