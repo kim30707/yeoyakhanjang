@@ -94,3 +94,44 @@ html:not([lang="ko"]) .service .text-link{margin-top:14px}
   .case-card img{aspect-ratio:2.2/1}
   .remote-support{margin-top:28px}
 }
+
+.work-next{margin-top:22px}
+.more-work>.section-head{margin-bottom:17px}
+.work-jumps{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.work-jumps a{display:inline-flex;align-items:center;min-height:44px;padding:7px 12px;border:1px solid #b8caba;border-radius:7px;background:#fff;color:#244a3b;font-size:14px;font-weight:700;text-decoration:none}
+.work-jumps a:hover{background:#e4efde;text-decoration:underline}
+.portfolio-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.portfolio-tile{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);align-items:center;gap:17px;padding:14px;background:#fff;border:1px solid #d4dfd4;border-radius:12px;scroll-margin-top:18px}
+.portfolio-tile:target{border-color:#4b7658;box-shadow:0 0 0 2px #d0e3cf}
+.portfolio-tile-body{min-width:0}
+.portfolio-tile-body h3{font-size:clamp(19px,2vw,23px);line-height:1.24;margin:5px 0 6px;letter-spacing:-.025em}
+.portfolio-tile-body>p:not(.portfolio-state){color:var(--soft);font-size:15px}
+.portfolio-state{font-size:13px;font-weight:800;color:#555a40}
+#naver-shopping .portfolio-state{color:#30583e}
+#weather-app .portfolio-state{color:#226073}
+#contact-book .portfolio-state{color:#675646}
+.portfolio-action{display:inline-flex;align-items:center;min-height:44px;margin-top:5px}
+.portfolio-art{min-width:0;margin:0;border-radius:8px}
+.company-art{overflow:hidden;background:#132d47}
+.company-art img{display:block;width:100%;height:auto;min-height:138px;object-fit:cover;object-position:32% center}
+.shop-art{padding:10px 10px 10px 27px;background:#eaf1e7;border:1px solid #cfddcd;color:#274536}
+.shop-art li{padding:4px 0;margin-left:2px}
+.shop-art li+li{border-top:1px solid #cbdccb}
+.shop-art li::marker{font-weight:700}
+.shop-art strong,.shop-art span{display:block}
+.shop-art strong{font-size:14px}
+.shop-art span{color:#42564b;font-size:13px}
+.weather-art{padding:10px 11px;background:#e5f2f5;color:#214956;border:1px solid #c6e0e4}
+.weather-art p{font-weight:800;font-size:14px}
+.weather-art table{width:100%;border-collapse:collapse;margin-top:4px}
+.weather-art th,.weather-art td{text-align:center;padding:2px;font-size:13px}
+.weather-art tbody td{font-size:18px;line-height:1.05}
+.weather-art tbody th{text-align:left}
+.book-art{padding:9px;background:#f2eee8;color:#574b3d;border:1px solid #dfd5c9}
+.book-search{padding:4px 7px;background:#fff;border:1px solid #d9d1c8;border-radius:5px;font-size:13px}
+.book-art ul{list-style:none;padding:0;margin:6px 0}
+.book-art li{display:flex;align-items:center;gap:6px;padding:2px 0;font-size:13px}
+.book-art li i{width:12px;height:12px;flex:0 0 12px;border-radius:50%;background:#afa596}
+.book-export{display:inline-block;padding:2px 6px;background:#e5dbd0;border-radius:4px;font-size:13px;font-weight:700}
+@media(max-width:980px){.portfolio-tile{grid-template-columns:1fr;align-content:start}.company-art img{aspect-ratio:2.7;min-height:0}}
+@media(max-width:660px){.portfolio-grid{grid-template-columns:1fr;gap:14px}.portfolio-tile{gap:11px}.company-art img{aspect-ratio:2.5}.work-jumps{gap:6px;margin-bottom:16px}}
