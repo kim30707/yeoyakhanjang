@@ -117,3 +117,14 @@ document.getElementById("copy").addEventListener("click",async ()=>{
   }
 });
 form.hidden=false;
+
+document.querySelectorAll("[data-demo]").forEach(demo=>{
+  const choices=demo.querySelectorAll("[data-demo-choice]");
+  const result=demo.querySelector("output");
+  choices.forEach(choice=>{
+    choice.addEventListener("click",()=>{
+      choices.forEach(other=>other.setAttribute("aria-pressed",String(other===choice)));
+      result.textContent=choice.textContent.trim();
+    });
+  });
+});
